@@ -1,0 +1,8 @@
+[
+  { "id": "itm-1", "name": "Classic Tomato Soup", "category": "Soup", "price": 129, "available": true },
+  { "id": "itm-2", "name": "Creamy Pumpkin Soup", "category": "Soup", "price": 149, "available": true },
+  { "id": "itm-3", "name": "Mango Shake", "category": "Shake", "price": 159, "available": true },
+  { "id": "itm-4", "name": "Berry Blast Shake", "category": "Shake", "price": 169, "available": false },
+  { "id": "itm-5", "name": "Orange Juice", "category": "Juice", "price": 99, "available": true },
+  { "id": "itm-6", "name": "Green Detox Juice", "category": "Juice", "price": 129, "available": true }
+]

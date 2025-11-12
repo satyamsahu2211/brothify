@@ -1,0 +1,13 @@
+[
+  {
+    "id": "res-1",
+    "name": "Aarav Patel",
+    "email": "aarav@example.com",
+    "phone": "9876543210",
+    "date": "2025-10-20",
+    "time": "19:30",
+    "partySize": 3,
+    "note": "Window seat if possible",
+    "status": "Pending"
+  }
+]

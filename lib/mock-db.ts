@@ -1,0 +1,195 @@
+export type Category = { id: string; name: string }
+export type Item = {
+  id: string
+  name: string
+  categoryId: string
+  price: number
+  description?: string
+}
+export type User = { id: string; email: string; name?: string }
+export type Order = {
+  id: string
+  userId: string
+  itemIds: string[]
+  total: number
+  status: "pending" | "paid" | "preparing" | "completed"
+  createdAt: string
+}
+
+export type Reservation = {
+  id: string
+  name: string
+  email: string
+  phone: string
+  partySize: number
+  datetime: string
+  notes?: string
+  status: "pending" | "confirmed" | "cancelled"
+  createdAt: string
+}
+
+const db = {
+  categories: [] as Category[],
+  items: [] as Item[],
+  users: [] as User[],
+  orders: [] as Order[],
+  reservations: [] as Reservation[],
+}
+
+function id(prefix: string) {
+  return `${prefix}_${Math.random().toString(36).slice(2, 9)}`
+}
+
+function seedOnce() {
+  if (db.categories.length) return
+
+  const catSoups: Category = { id: id("cat"), name: "Soups" }
+  const catShakes: Category = { id: id("cat"), name: "Shakes" }
+  const catJuices: Category = { id: id("cat"), name: "Juices" }
+  db.categories.push(catSoups, catShakes, catJuices)
+
+  const tomato: Item = {
+    id: id("itm"),
+    name: "Tomato Basil Soup",
+    categoryId: catSoups.id,
+    price: 6.5,
+    description: "Slow-simmered tomatoes, basil, and cream.",
+  }
+  const pumpkin: Item = {
+    id: id("itm"),
+    name: "Creamy Pumpkin Soup",
+    categoryId: catSoups.id,
+    price: 7.0,
+    description: "Velvety pumpkin with nutmeg and cream.",
+  }
+  const chocoShake: Item = {
+    id: id("itm"),
+    name: "Chocolate Shake",
+    categoryId: catShakes.id,
+    price: 5.5,
+    description: "Rich cocoa, ice cream, and milk.",
+  }
+  const greenJuice: Item = {
+    id: id("itm"),
+    name: "Green Juice",
+    categoryId: catJuices.id,
+    price: 5.0,
+    description: "Kale, apple, cucumber, ginger.",
+  }
+  db.items.push(tomato, pumpkin, chocoShake, greenJuice)
+
+  const u1: User = { id: id("usr"), email: "alice@example.com", name: "Alice" }
+  const u2: User = { id: id("usr"), email: "bob@example.com", name: "Bob" }
+  db.users.push(u1, u2)
+
+  const o1: Order = {
+    id: id("ord"),
+    userId: u1.id,
+    itemIds: [tomato.id, chocoShake.id],
+    total: 12.0,
+    status: "paid",
+    createdAt: new Date().toISOString(),
+  }
+  db.orders.push(o1)
+
+  const r1: Reservation = {
+    id: id("res"),
+    name: "Sahil Patel",
+    email: "sahil@example.com",
+    phone: "+91-90000-00000",
+    partySize: 2,
+    datetime: new Date(Date.now() + 3600_000).toISOString(),
+    notes: "Window seat if possible",
+    status: "confirmed",
+    createdAt: new Date().toISOString(),
+  }
+  db.reservations.push(r1)
+}
+seedOnce()
+
+export const mockDb = {
+  listCategories() {
+    return db.categories
+  },
+  addCategory(name: string) {
+    const c: Category = { id: id("cat"), name }
+    db.categories.push(c)
+    return c
+  },
+  listItems() {
+    return db.items
+  },
+  getItem(idStr: string) {
+    return db.items.find((i) => i.id === idStr)
+  },
+  addItem(data: Omit<Item, "id">) {
+    const it: Item = { id: id("itm"), ...data }
+    db.items.push(it)
+    return it
+  },
+  updateItem(idStr: string, patch: Partial<Item>) {
+    const it = db.items.find((i) => i.id === idStr)
+    if (!it) return
+    Object.assign(it, patch)
+    return it
+  },
+  deleteItem(idStr: string) {
+    const idx = db.items.findIndex((i) => i.id === idStr)
+    if (idx >= 0) db.items.splice(idx, 1)
+  },
+  listUsers() {
+    return db.users
+  },
+  addUser(data: Omit<User, "id">) {
+    const u: User = { id: id("usr"), ...data }
+    db.users.push(u)
+    return u
+  },
+  updateUser(idStr: string, patch: Partial<User>) {
+    const u = db.users.find((x) => x.id === idStr)
+    if (!u) return
+    Object.assign(u, patch)
+    return u
+  },
+  deleteUser(idStr: string) {
+    const idx = db.users.findIndex((u) => u.id === idStr)
+    if (idx >= 0) db.users.splice(idx, 1)
+  },
+  listOrders() {
+    return db.orders
+  },
+  getOrder(idStr: string) {
+    return db.orders.find((o) => o.id === idStr)
+  },
+  addOrder(data: Omit<Order, "id" | "createdAt">) {
+    const o: Order = { id: id("ord"), createdAt: new Date().toISOString(), ...data }
+    db.orders.push(o)
+    return o
+  },
+  listReservations() {
+    return db.reservations
+  },
+  getReservation(idStr: string) {
+    return db.reservations.find((r) => r.id === idStr)
+  },
+  addReservation(data: Omit<Reservation, "id" | "createdAt" | "status"> & { status?: Reservation["status"] }) {
+    const r: Reservation = {
+      id: id("res"),
+      createdAt: new Date().toISOString(),
+      status: data.status ?? "pending",
+      ...data,
+    }
+    db.reservations.push(r)
+    return r
+  },
+  updateReservation(idStr: string, patch: Partial<Reservation>) {
+    const r = db.reservations.find((x) => x.id === idStr)
+    if (!r) return
+    Object.assign(r, patch)
+    return r
+  },
+  deleteReservation(idStr: string) {
+    const idx = db.reservations.findIndex((r) => r.id === idStr)
+    if (idx >= 0) db.reservations.splice(idx, 1)
+  },
+}
