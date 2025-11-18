@@ -1,14 +1,27 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
-// Request interceptor
-axios.interceptors.request.use(
-  (config: import("axios").InternalAxiosRequestConfig) => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken && config.headers) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+const api = axios.create({
+  baseURL: "https://your-api.com", // change this
+});
+
+// REQUEST INTERCEPTOR
+api.interceptors.request.use(
+  (config) => {
+    // Add token if exists
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
+
+    // Optional: add content-type
+    config.headers["Content-Type"] = "application/json";
+
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
+export default api;
