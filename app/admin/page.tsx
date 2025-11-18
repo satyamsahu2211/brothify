@@ -2,7 +2,6 @@
 import React from "react";
 import { getUserFromCookie } from "@/lib/auth";
 import { logout } from "../(auth)/actions";
-import { baseService } from "@/services/base-service";
 
 type HealthResponse = {
   ok: boolean;
@@ -31,16 +30,7 @@ export default async function AdminPage() {
     );
   }
 
-  // Safe health check: try/catch and sensible fallback
-  let status: HealthResponse = { ok: false, method: "GET", at: new Date().toISOString() };
-  try {
-    const res = await baseService.get<HealthResponse>("/health");
-    if (res) status = res;
-  } catch (err) {
-    // log server-side if you have a logger; fallback already set above
-    // console.error("Health check failed", err);
-  }
-
+ 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <header className="flex items-center justify-between">
@@ -84,7 +74,7 @@ export default async function AdminPage() {
           <h3 className="font-medium">System Status</h3>
           <p className="mt-2 text-sm text-muted-foreground">Dummy API call via BaseService</p>
           <p className="mt-3 text-xs text-muted-foreground">
-            {`ok: ${String(status.ok)} | method: ${status.method ?? "unknown"} | at: ${status.at ?? "unknown"}`}
+            {/* {`ok: ${String()} | method: ${} | at: ${ ?? "unknown"}`} */}
           </p>
         </div>
       </section>

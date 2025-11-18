@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import useSWR from "swr"
-import { api } from "../../services/base-service"
 import { endpoints } from "@/utils/url"
 
 const nav = [
@@ -18,7 +17,7 @@ const nav = [
 
 export function SiteHeader() {
   const pathname = usePathname()
-  const { data: me } = useSWR<{ email?: string; role?: "admin" | "user" }>(endpoints.authMe, api.get)
+  const { data: me } = useSWR<{ email?: string; role?: "admin" | "user" }>([])
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">

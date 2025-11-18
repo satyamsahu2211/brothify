@@ -3,18 +3,16 @@
 import type React from "react"
 
 import useSWR from "swr"
-import { api } from "@/services/base-service"
 import { endpoints } from "@/utils/url"
 import { useMemo, useState } from "react"
 
 type Category = { id: string; name: string }
 type Item = { id: string; name: string; categoryId: string; price: number; description?: string }
 
-const fetcher = (path: string) => api.get(path)
 
 export function ItemManager() {
-  const { data: categories } = useSWR<Category[]>(endpoints.categories, fetcher)
-  const { data: items, mutate } = useSWR<Item[]>(endpoints.items, fetcher)
+  const { data: categories } = useSWR<Category[]>([])
+  const { data: items, mutate } = useSWR<Item[]>([])
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState<string>("")
@@ -23,32 +21,17 @@ export function ItemManager() {
 
   const catMap = useMemo(() => new Map((categories || []).map((c) => [c.id, c.name])), [categories])
 
-  async function onAdd(e: React.FormEvent) {
-    e.preventDefault()
-    if (!name.trim() || !categoryId) return
-    await api.post(endpoints.items, {
-      name,
-      categoryId,
-      price: Number.parseFloat(price || "0") || 0,
-      description,
-    })
-    setName("")
-    setPrice("")
-    setCategoryId("")
-    setDescription("")
-    mutate()
-  }
+ 
 
   async function onDelete(id: string) {
-    await api.delete(`${endpoints.items}/${id}`)
-    mutate()
+   
   }
 
   return (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Items</h3>
 
-      <form onSubmit={onAdd} className="grid grid-cols-1 md:grid-cols-4 gap-2">
+      <form  className="grid grid-cols-1 md:grid-cols-4 gap-2">
         <input
           className="border rounded px-3 py-2 bg-background text-foreground"
           placeholder="Item name"

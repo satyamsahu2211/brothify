@@ -3,30 +3,21 @@
 import type React from "react"
 
 import useSWR from "swr"
-import { api } from "@/services/base-service"
 import { endpoints } from "@/utils/url"
 import { useState } from "react"
 
 type Category = { id: string; name: string }
 
-const fetcher = (path: string) => api.get(path)
 
 export function CategoryManager() {
-  const { data, mutate, isLoading, error } = useSWR<Category[]>(endpoints.categories, fetcher)
+  const { data, mutate, isLoading, error } = useSWR<Category[]>([])
   const [name, setName] = useState("")
 
-  async function onAdd(e: React.FormEvent) {
-    e.preventDefault()
-    if (!name.trim()) return
-    await api.post(endpoints.categories, { name })
-    setName("")
-    mutate()
-  }
 
   return (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Categories</h3>
-      <form onSubmit={onAdd} className="flex items-center gap-2">
+      <form  className="flex items-center gap-2">
         <input
           aria-label="Category name"
           className="border rounded px-3 py-2 bg-background text-foreground"

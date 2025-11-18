@@ -2,21 +2,13 @@
 
 import useSWR from "swr"
 import { useState } from "react"
-import { api } from "@/services/base-service"
 import { endpoints } from "@/utils/url"
 
 export default function AdminUsersPage() {
-  const { data, mutate } = useSWR(endpoints.users, api.get)
+  const { data, mutate } = useSWR([])
   const [email, setEmail] = useState("")
   const [role, setRole] = useState<"admin" | "user">("user")
 
-  async function addUser() {
-    if (!email) return
-    await api.post(endpoints.users, { email, role })
-    setEmail("")
-    setRole("user")
-    mutate()
-  }
 
   return (
     <section className="space-y-4">
@@ -36,7 +28,7 @@ export default function AdminUsersPage() {
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
-        <button className="px-3 py-2 rounded-md bg-primary text-primary-foreground" onClick={addUser}>
+        <button className="px-3 py-2 rounded-md bg-primary text-primary-foreground">
           Add
         </button>
       </div>
@@ -50,8 +42,7 @@ export default function AdminUsersPage() {
             <button
               className="text-red-600 hover:underline"
               onClick={async () => {
-                await api.delete(`${endpoints.users}/${u.id}`)
-                mutate()
+                
               }}
             >
               Delete

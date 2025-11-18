@@ -1,7 +1,6 @@
 "use client"
 
 import useSWR from "swr"
-import { api } from "@/services/base-service"
 import { endpoints } from "@/utils/url"
 import { useMemo } from "react"
 
@@ -16,12 +15,11 @@ type Order = {
   createdAt: string
 }
 
-const fetcher = (path: string) => api.get(path)
 
 export function OrdersManager() {
-  const { data: orders } = useSWR<Order[]>(endpoints.orders, fetcher)
-  const { data: users } = useSWR<User[]>(endpoints.users, fetcher)
-  const { data: items } = useSWR<Item[]>(endpoints.items, fetcher)
+  const { data: orders } = useSWR<Order[]>([])
+  const { data: users } = useSWR<User[]>([])
+  const { data: items } = useSWR<Item[]>([])
 
   const userMap = useMemo(() => new Map((users || []).map((u) => [u.id, u])), [users])
   const itemMap = useMemo(() => new Map((items || []).map((i) => [i.id, i])), [items])
