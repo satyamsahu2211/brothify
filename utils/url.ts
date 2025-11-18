@@ -1,24 +1,15 @@
-export const BASE_URL = "https://example-dummy.api"
+export const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000"
+console.log("BASE_URL",BASE_URL);
 
 export const endpoints = {
-  auth: {
-    emailLogin: "/auth/email/login", // dummy endpoint
-    logout: "/auth/logout", // dummy endpoint
-    google: "/auth/google", // future
-    phoneOtp: "/auth/phone/otp", // future
-  },
-  soups: "/soups",
-  juices: "/juices",
-  shakes: "/shakes",
-  health: "/health",
+  login : BASE_URL + "/auth/login",
+  dish : BASE_URL + "/dishes",
   categories: "/api/categories",
-  items: "/api/items",
   users: "/api/users",
   orders: "/api/orders",
-  authMe: "/api/auth/me", // added for role-aware UI
   reservations: "/api/reservations",
 }
 
-export function withBase(path: string) {
-  return `${BASE_URL}${path}`
-}
+export default endpoints;
+
+

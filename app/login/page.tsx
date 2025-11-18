@@ -1,13 +1,31 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useSearchParams } from "next/navigation"
-import { loginWithEmail } from "../(auth)/actions"
+import { useState } from "react";
+import { authService } from "@/services/authService";
 
 export default function LoginPage() {
-  const [submitting, setSubmitting] = useState(false)
-  const searchParams = useSearchParams()
-  const error = searchParams.get("error") || ""
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    try {
+      const res = await authService.login({ email, password });
+      console.log("Login success:", res);
+
+    } catch (err: any) {
+      setError(err?.message || "Login failed");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <main className="mx-auto max-w-md px-4 py-16">
@@ -18,13 +36,16 @@ export default function LoginPage() {
         </p>
       </header>
 
-      {error ? (
-        <p role="alert" className="mt-4 rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
+      {error && (
+        <p
+          role="alert"
+          className="mt-4 rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive"
+        >
           {error}
         </p>
-      ) : null}
+      )}
 
-      <form action={loginWithEmail} onSubmit={() => setSubmitting(true)} className="mt-6 space-y-4">
+      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div className="grid gap-2">
           <label htmlFor="email" className="text-sm font-medium">
             Email
@@ -62,5 +83,5 @@ export default function LoginPage() {
         </button>
       </form>
     </main>
-  )
+  );
 }

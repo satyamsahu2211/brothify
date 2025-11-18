@@ -1,7 +1,6 @@
 // app/(admin)/page.tsx  (or wherever this lives)
 import React from "react";
 import { getUserFromCookie } from "@/lib/auth";
-import { logout } from "../(auth)/actions";
 
 type HealthResponse = {
   ok: boolean;
@@ -40,7 +39,7 @@ export default async function AdminPage() {
         </div>
 
         {/* ensure the server action logout expects a POST; add method for clarity */}
-        <form action={logout} method="post">
+        <form  method="post">
           <button
             type="submit"
             className="rounded-md border border-border bg-background/70 px-4 py-2 shadow hover:bg-secondary/70"
