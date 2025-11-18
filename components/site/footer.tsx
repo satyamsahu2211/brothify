@@ -49,6 +49,11 @@ export function SiteFooter() {
                 Accessibility
               </Link>
             </li>
+                        <li>
+              <Link  href="/admin" className="hover:text-foreground transition-colors">
+                Admin
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
@@ -58,7 +63,7 @@ export function SiteFooter() {
             <li>Brooklyn, NY 11238</li>
             <li className="mt-3 text-brand">Open: 10AM – 9PM</li>
           </ul>
-          <div className="mt-4 flex items-center gap-3 text-sm">
+          {/* <div className="mt-4 flex items-center gap-3 text-sm">
             <Link
               href="/admin"
               className="rounded-md border border-border/50 px-3 py-1.5 text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
@@ -71,7 +76,7 @@ export function SiteFooter() {
             >
               Login
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="border-t border-border/40 py-4 text-center text-xs text-muted-foreground">

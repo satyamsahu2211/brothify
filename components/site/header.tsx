@@ -48,14 +48,14 @@ export function SiteHeader() {
         >
           See Menu
         </Link>
-        {me?.role === "admin" ? (
+        {/* {me?.role === "admin" ? (
           <Link
             href="/admin"
             className="ml-2 rounded-md border border-border bg-background/70 px-4 py-2 text-foreground shadow hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             Admin
           </Link>
-        ) : null}
+        ) : null} */}
       </div>
     </header>
   )
