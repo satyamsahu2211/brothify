@@ -1,16 +1,20 @@
-// app/(admin)/page.tsx  (or wherever this lives)
-import React from "react";
-import { getUserFromCookie } from "@/lib/auth";
+"use client"
+import React, { useEffect, useState } from "react";
 
-type HealthResponse = {
-  ok: boolean;
-  method?: string;
-  at?: string;
-  // add other fields your /health returns
-};
 
-export default async function AdminPage() {
-  const user = await getUserFromCookie();
+export default function AdminPage() {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    try {
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+    } catch {
+      setUser(null);
+    }
+  }, []);
+
+
 
   if (!user) {
     return (
@@ -29,7 +33,7 @@ export default async function AdminPage() {
     );
   }
 
- 
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <header className="flex items-center justify-between">
@@ -39,15 +43,13 @@ export default async function AdminPage() {
         </div>
 
         {/* ensure the server action logout expects a POST; add method for clarity */}
-        <form  method="post">
-          <button
-            type="submit"
-            className="rounded-md border border-border bg-background/70 px-4 py-2 shadow hover:bg-secondary/70"
-            aria-label="Log out"
-          >
-            Log out
-          </button>
-        </form>
+        <button
+          type="submit"
+          className="rounded-md border border-border bg-background/70 px-4 py-2 shadow hover:bg-secondary/70"
+          aria-label="Log out"
+        >
+          Log out
+        </button>
       </header>
 
       <section className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">

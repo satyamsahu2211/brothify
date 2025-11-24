@@ -1,4 +1,4 @@
-export const metadata = { title: "Services — YoFood" }
+export const metadata = { title: "Services — Brothify" }
 
 export default function ServicesPage() {
   return (

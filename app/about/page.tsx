@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "About Us — YoFood",
+  title: "About Us — Brothify",
   description: "Learn about our story, mission, and commitment to fresh, healthy food.",
 }
 
@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <header className="text-center">
-        <h1 className="font-serif text-4xl md:text-5xl">About YoFood</h1>
+        <h1 className="font-serif text-4xl md:text-5xl">About Brothify</h1>
         <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
           Fresh ingredients, authentic recipes, and unforgettable taste.
         </p>
@@ -20,7 +20,7 @@ export default function AboutPage() {
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Our Story</h2>
           <p>
-            YoFood was founded in 2018 with a simple mission: to bring fresh, healthy, and flavorful meals to everyone.
+            Brothify was founded in 2018 with a simple mission: to bring fresh, healthy, and flavorful meals to everyone.
             What started as a small neighborhood kitchen has grown into a beloved destination for food lovers seeking
             quality and authenticity.
           </p>

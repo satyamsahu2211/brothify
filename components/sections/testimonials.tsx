@@ -14,7 +14,7 @@ export function Testimonials() {
           </div>
           <div className="flex-1">
             <p className="text-pretty leading-relaxed text-muted-foreground md:text-lg">
-              "YoFood is a revelation. The flavors, the service, and the ambience are consistently excellent. I keep
+              "Brothify is a revelation. The flavors, the service, and the ambience are consistently excellent. I keep
               coming back for the whole wheat bread with avocado sauce."
             </p>
             <p className="mt-3 text-sm font-medium">

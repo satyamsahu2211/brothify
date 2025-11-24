@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export const metadata = { title: "Blog — YoFood" }
+export const metadata = { title: "Blog — Brothify" }
 
 const posts = [
   {
@@ -25,7 +25,7 @@ export default function BlogPage() {
     <main className="mx-auto max-w-6xl px-4 py-12">
       <header className="text-center">
         <h1 className="font-serif text-4xl">From Our Kitchen</h1>
-        <p className="mt-2 text-muted-foreground">Stories, tips, and recipes from the YoFood team.</p>
+        <p className="mt-2 text-muted-foreground">Stories, tips, and recipes from the Brothify team.</p>
       </header>
 
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">

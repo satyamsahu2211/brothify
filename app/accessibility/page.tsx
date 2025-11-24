@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accessibility — YoFood",
-  description: "Our commitment to making YoFood accessible to everyone.",
+  title: "Accessibility — Brothify",
+  description: "Our commitment to making Brothify accessible to everyone.",
 }
 
 export default function AccessibilityPage() {
@@ -17,14 +17,14 @@ export default function AccessibilityPage() {
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Our Commitment</h2>
           <p>
-            YoFood is committed to ensuring digital accessibility for people with disabilities. We are continually
+            Brothify is committed to ensuring digital accessibility for people with disabilities. We are continually
             improving the user experience for everyone and applying the relevant accessibility standards.
           </p>
         </section>
 
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Measures to Support Accessibility</h2>
-          <p>YoFood takes the following measures to ensure accessibility:</p>
+          <p>Brothify takes the following measures to ensure accessibility:</p>
           <ul className="mt-2 list-disc space-y-1 pl-6">
             <li>Include accessibility as part of our mission statement</li>
             <li>Integrate accessibility into our procurement practices</li>
@@ -55,13 +55,13 @@ export default function AccessibilityPage() {
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Feedback</h2>
           <p>
-            We welcome your feedback on the accessibility of YoFood. Please let us know if you encounter accessibility
+            We welcome your feedback on the accessibility of Brothify. Please let us know if you encounter accessibility
             barriers:
           </p>
           <p className="mt-3">
             Email:{" "}
-            <a href="mailto:accessibility@yofood.com" className="font-medium text-brand hover:underline">
-              accessibility@yofood.com
+            <a href="mailto:accessibility@Brothify.com" className="font-medium text-brand hover:underline">
+              accessibility@Brothify.com
             </a>
           </p>
           <p className="mt-1">Phone: (718) 555-0123</p>
@@ -70,7 +70,7 @@ export default function AccessibilityPage() {
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Technical Specifications</h2>
           <p>
-            Accessibility of YoFood relies on the following technologies to work with the particular combination of web
+            Accessibility of Brothify relies on the following technologies to work with the particular combination of web
             browser and any assistive technologies or plugins installed on your computer: HTML, CSS, JavaScript.
           </p>
         </section>

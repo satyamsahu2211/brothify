@@ -1,25 +1,25 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Press — YoFood",
-  description: "Media resources, press releases, and contact information for YoFood.",
+  title: "Press — Brothify",
+  description: "Media resources, press releases, and contact information for Brothify.",
 }
 
 export default function PressPage() {
   const releases = [
     {
       date: "March 15, 2025",
-      title: "YoFood Launches New Spring Menu",
+      title: "Brothify Launches New Spring Menu",
       excerpt: "Featuring seasonal ingredients and innovative plant-based options.",
     },
     {
       date: "January 8, 2025",
-      title: "YoFood Named Brooklyn's Best Healthy Eatery",
-      excerpt: "Local publication honors YoFood for fresh, sustainable dining.",
+      title: "Brothify Named Brooklyn's Best Healthy Eatery",
+      excerpt: "Local publication honors Brothify for fresh, sustainable dining.",
     },
     {
       date: "November 20, 2024",
-      title: "YoFood Expands Delivery Service",
+      title: "Brothify Expands Delivery Service",
       excerpt: "Now serving wider Brooklyn area with same-day delivery.",
     },
   ]
@@ -29,7 +29,7 @@ export default function PressPage() {
       <header className="text-center">
         <h1 className="font-serif text-4xl md:text-5xl">Press & Media</h1>
         <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-          News, updates, and media resources for YoFood.
+          News, updates, and media resources for Brothify.
         </p>
       </header>
 
@@ -56,8 +56,8 @@ export default function PressPage() {
           For press inquiries, interviews, or media resources, please contact:
         </p>
         <p className="mt-3">
-          <a href="mailto:press@yofood.com" className="font-medium text-brand hover:underline">
-            press@yofood.com
+          <a href="mailto:press@Brothify.com" className="font-medium text-brand hover:underline">
+            press@Brothify.com
           </a>
         </p>
       </section>

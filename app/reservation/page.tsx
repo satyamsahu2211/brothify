@@ -1,4 +1,4 @@
-export const metadata = { title: "Reservation — YoFood" }
+export const metadata = { title: "Reservation — Brothify" }
 
 export default function ReservationPage() {
   return (

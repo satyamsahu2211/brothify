@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { authService } from "@/services/authService";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter()
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -18,7 +20,12 @@ export default function LoginPage() {
 
     try {
       const res = await authService.login({ email, password });
-      console.log("Login success:", res);
+      if (res.status == 200) {
+        localStorage.setItem("user", JSON.stringify(res?.data?.data))
+        localStorage.setItem("token", JSON.stringify(res?.data?.data?.token) || "")
+        router.push("/admin")
+      }
+
 
     } catch (err: any) {
       setError(err?.message || "Login failed");
