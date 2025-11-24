@@ -14,7 +14,7 @@ export default function AdminPage() {
     }
   }, []);
 
-  
+
 
   if (!user) {
     return (
@@ -33,7 +33,7 @@ export default function AdminPage() {
     );
   }
 
- 
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <header className="flex items-center justify-between">
@@ -43,13 +43,13 @@ export default function AdminPage() {
         </div>
 
         {/* ensure the server action logout expects a POST; add method for clarity */}
-          <button
-            type="submit"
-            className="rounded-md border border-border bg-background/70 px-4 py-2 shadow hover:bg-secondary/70"
-            aria-label="Log out"
-          >
-            Log out
-          </button>
+        <button
+          type="submit"
+          className="rounded-md border border-border bg-background/70 px-4 py-2 shadow hover:bg-secondary/70"
+          aria-label="Log out"
+        >
+          Log out
+        </button>
       </header>
 
       <section className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">

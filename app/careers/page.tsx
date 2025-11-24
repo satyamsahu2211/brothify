@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Careers — YoFood",
+  title: "Careers — Brothify",
   description: "Join our team and help us create exceptional food experiences.",
 }
 
@@ -30,7 +30,7 @@ export default function CareersPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <header className="text-center">
-        <h1 className="font-serif text-4xl md:text-5xl">Careers at YoFood</h1>
+        <h1 className="font-serif text-4xl md:text-5xl">Careers at Brothify</h1>
         <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
           Join a team passionate about great food and exceptional service.
         </p>
@@ -53,7 +53,7 @@ export default function CareersPage() {
                   </p>
                 </div>
                 <a
-                  href={`mailto:careers@yofood.com?subject=Application for ${job.title}`}
+                  href={`mailto:careers@Brothify.com?subject=Application for ${job.title}`}
                   className="rounded-md bg-brand px-4 py-2 text-sm font-medium text-brand-foreground shadow transition-all hover:scale-105 hover:shadow-lg"
                 >
                   Apply Now
@@ -69,8 +69,8 @@ export default function CareersPage() {
         <h2 className="font-serif text-2xl">Don't see the right role?</h2>
         <p className="mt-2 leading-relaxed text-muted-foreground">
           We're always looking for talented people. Send your resume to{" "}
-          <a href="mailto:careers@yofood.com" className="font-medium text-brand hover:underline">
-            careers@yofood.com
+          <a href="mailto:careers@Brothify.com" className="font-medium text-brand hover:underline">
+            careers@Brothify.com
           </a>
         </p>
       </section>

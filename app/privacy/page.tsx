@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — YoFood",
-  description: "Learn how YoFood collects, uses, and protects your personal information.",
+  title: "Privacy Policy — Brothify",
+  description: "Learn how Brothify collects, uses, and protects your personal information.",
 }
 
 export default function PrivacyPage() {
@@ -56,8 +56,8 @@ export default function PrivacyPage() {
           <p>
             You have the right to access, update, or delete your personal information. To exercise these rights, please
             contact us at{" "}
-            <a href="mailto:privacy@yofood.com" className="font-medium text-brand hover:underline">
-              privacy@yofood.com
+            <a href="mailto:privacy@Brothify.com" className="font-medium text-brand hover:underline">
+              privacy@Brothify.com
             </a>
             .
           </p>
@@ -67,8 +67,8 @@ export default function PrivacyPage() {
           <h2 className="mb-3 font-serif text-2xl text-foreground">Contact Us</h2>
           <p>
             If you have questions about this Privacy Policy, please contact us at{" "}
-            <a href="mailto:privacy@yofood.com" className="font-medium text-brand hover:underline">
-              privacy@yofood.com
+            <a href="mailto:privacy@Brothify.com" className="font-medium text-brand hover:underline">
+              privacy@Brothify.com
             </a>
             .
           </p>

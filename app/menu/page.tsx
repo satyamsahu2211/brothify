@@ -1,7 +1,7 @@
 import { RecipeFilters } from "@/components/filters/recipe-filters"
 import { recipes } from "@/lib/recipes"
 
-export const metadata = { title: "Menu — YoFood" }
+export const metadata = { title: "Menu — Brothify" }
 
 export default function MenuPage() {
   return (

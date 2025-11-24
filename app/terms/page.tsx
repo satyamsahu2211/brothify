@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Terms of Service — YoFood",
-  description: "Terms and conditions for using YoFood services.",
+  title: "Terms of Service — Brothify",
+  description: "Terms and conditions for using Brothify services.",
 }
 
 export default function TermsPage() {
@@ -17,7 +17,7 @@ export default function TermsPage() {
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Acceptance of Terms</h2>
           <p>
-            By accessing or using YoFood's services, you agree to be bound by these Terms of Service. If you do not
+            By accessing or using Brothify's services, you agree to be bound by these Terms of Service. If you do not
             agree to these terms, please do not use our services.
           </p>
         </section>
@@ -50,7 +50,7 @@ export default function TermsPage() {
         <section>
           <h2 className="mb-3 font-serif text-2xl text-foreground">Limitation of Liability</h2>
           <p>
-            YoFood is not liable for any indirect, incidental, or consequential damages arising from your use of our
+            Brothify is not liable for any indirect, incidental, or consequential damages arising from your use of our
             services. Our total liability is limited to the amount paid for the relevant order.
           </p>
         </section>
@@ -67,8 +67,8 @@ export default function TermsPage() {
           <h2 className="mb-3 font-serif text-2xl text-foreground">Contact Us</h2>
           <p>
             For questions about these Terms of Service, contact us at{" "}
-            <a href="mailto:legal@yofood.com" className="font-medium text-brand hover:underline">
-              legal@yofood.com
+            <a href="mailto:legal@Brothify.com" className="font-medium text-brand hover:underline">
+              legal@Brothify.com
             </a>
             .
           </p>
