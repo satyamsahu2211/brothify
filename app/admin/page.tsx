@@ -1,50 +1,21 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 
 export default function AdminPage() {
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    try {
-      setUser(storedUser ? JSON.parse(storedUser) : null);
-    } catch {
-      setUser(null);
-    }
-  }, []);
-
-
-
-  if (!user) {
-    return (
-      <main className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <h1 className="font-serif text-3xl">Admin Panel</h1>
-        <p className="mt-2 text-muted-foreground">
-          You must sign in with your email to access the admin panel.
-        </p>
-        <a
-          href="/login"
-          className="mt-6 inline-block rounded-md bg-brand px-5 py-2.5 text-brand-foreground shadow hover:brightness-110"
-        >
-          Go to Login
-        </a>
-      </main>
-    );
-  }
-
+  const { user, logout } = useAuth();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <header className="flex items-center justify-between">
         <div>
           <h1 className="font-serif text-3xl">Admin Panel</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Signed in as {user.email}</p>
+          <p className="mt-1 text-sm text-muted-foreground">Signed in as {user?.email}</p>
         </div>
 
-        {/* ensure the server action logout expects a POST; add method for clarity */}
         <button
-          type="submit"
+          onClick={logout}
           className="rounded-md border border-border bg-background/70 px-4 py-2 shadow hover:bg-secondary/70"
           aria-label="Log out"
         >
