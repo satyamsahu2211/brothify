@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000"
+export const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001/v1/api/";
 console.log("BASE_URL",BASE_URL);
 
 export const endpoints = {
