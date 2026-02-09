@@ -19,6 +19,9 @@ const AdminSidebar = () => {
                 <Link href="/admin/items" className="text-foreground/80 hover:text-foreground">
                     Items
                 </Link>
+                    <Link href="/admin/categories" className="text-foreground/80 hover:text-foreground">
+                    Category
+                </Link>
                 <Link href="/admin/reservations" className="text-foreground/80 hover:text-foreground">
                     Reservations
                 </Link>

@@ -1,7 +1,9 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import useSWR from "swr"
+import { categoryService } from "@/services/categoryService"
 
 export type Recipe = {
   id: string
@@ -13,8 +15,32 @@ export type Recipe = {
   spicy?: boolean
 }
 
+type Category = {
+  cat_id: string
+  name: string
+  description: string
+}
+
 export function RecipeFilters({ recipes }: { recipes: Recipe[] }) {
-  const categories = useMemo(() => ["All", ...Array.from(new Set(recipes.map((r) => r.category)))], [recipes])
+  const { data: categoriesData = [] } = useSWR(
+    "filter-categories",
+    async () => {
+      try {
+        const response = await categoryService.list()
+        return response.data?.data || []
+      } catch (error) {
+        console.error("Failed to fetch categories:", error)
+        return []
+      }
+    },
+    { revalidateOnFocus: false }
+  )
+
+  const categories = useMemo(() => {
+    const apiCategories = categoriesData.map((c: Category) => c.name)
+    return ["All", ...apiCategories]
+  }, [categoriesData])
+
   const [query, setQuery] = useState("")
   const [cat, setCat] = useState("All")
   const [vegan, setVegan] = useState(false)

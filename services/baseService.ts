@@ -6,7 +6,10 @@ axios.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    config.headers["Content-Type"] = "application/json";
+    // Only set Content-Type for JSON, allow FormData to set it automatically
+    if (!(config.data instanceof FormData)) {
+      config.headers["Content-Type"] = "application/json";
+    }
     return config;
   },
   (error) => {
