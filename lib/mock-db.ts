@@ -28,12 +28,24 @@ export type Reservation = {
   createdAt: string
 }
 
+export type Feedback = {
+  id: string
+  reservation_id: string
+  customer_email: string
+  customer_name: string
+  rating: number
+  comment: string
+  created_at?: string
+  updated_at?: string
+}
+
 const db = {
   categories: [] as Category[],
   items: [] as Item[],
   users: [] as User[],
   orders: [] as Order[],
   reservations: [] as Reservation[],
+  feedback: [] as Feedback[],
 }
 
 function id(prefix: string) {
@@ -104,6 +116,35 @@ function seedOnce() {
     createdAt: new Date().toISOString(),
   }
   db.reservations.push(r1)
+
+  const f1: Feedback = {
+    id: id("fbk"),
+    reservation_id: r1.id,
+    customer_email: "sahil@example.com",
+    customer_name: "Sahil Patel",
+    rating: 5,
+    comment: "Excellent food and great service! Will definitely come back.",
+    created_at: new Date().toISOString(),
+  }
+  const f2: Feedback = {
+    id: id("fbk"),
+    reservation_id: id("res"),
+    customer_email: "john@example.com",
+    customer_name: "John Smith",
+    rating: 4,
+    comment: "Good food, but a bit slow on service.",
+    created_at: new Date(Date.now() - 86400000).toISOString(),
+  }
+  const f3: Feedback = {
+    id: id("fbk"),
+    reservation_id: id("res"),
+    customer_email: "priya@example.com",
+    customer_name: "Priya Sharma",
+    rating: 5,
+    comment: "Amazing ambiance and delicious dishes!",
+    created_at: new Date(Date.now() - 172800000).toISOString(),
+  }
+  db.feedback.push(f1, f2, f3)
 }
 seedOnce()
 
@@ -191,5 +232,31 @@ export const mockDb = {
   deleteReservation(idStr: string) {
     const idx = db.reservations.findIndex((r) => r.id === idStr)
     if (idx >= 0) db.reservations.splice(idx, 1)
+  },
+  listFeedback() {
+    return db.feedback
+  },
+  getFeedback(idStr: string) {
+    return db.feedback.find((f) => f.id === idStr)
+  },
+  addFeedback(data: Omit<Feedback, "id" | "created_at" | "updated_at">) {
+    const f: Feedback = {
+      id: id("fbk"),
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      ...data,
+    }
+    db.feedback.push(f)
+    return f
+  },
+  updateFeedback(idStr: string, patch: Partial<Feedback>) {
+    const f = db.feedback.find((x) => x.id === idStr)
+    if (!f) return
+    Object.assign(f, patch)
+    return f
+  },
+  deleteFeedback(idStr: string) {
+    const idx = db.feedback.findIndex((f) => f.id === idStr)
+    if (idx >= 0) db.feedback.splice(idx, 1)
   },
 }

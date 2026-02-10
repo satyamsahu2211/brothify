@@ -25,6 +25,12 @@ const AdminSidebar = () => {
                 <Link href="/admin/reservations" className="text-foreground/80 hover:text-foreground">
                     Reservations
                 </Link>
+                <Link href="/admin/orders" className="text-foreground/80 hover:text-foreground">
+                    Orders
+                </Link>
+                <Link href="/admin/users" className="text-foreground/80 hover:text-foreground">
+                    Users
+                </Link>
                 <Link href="/admin/feedback" className="text-foreground/80 hover:text-foreground">
                     Feedback
                 </Link>

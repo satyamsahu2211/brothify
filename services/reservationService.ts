@@ -1,11 +1,11 @@
-import URL from '../utils/url';
+import endpoints from '../utils/url';
 import apiClient from '../services/baseService';
 
-const list = async (params?: any) => apiClient.get(URL.reservations, { params });
-const get = async (id: string) => apiClient.get(`${URL.reservations}/${id}`);
-const create = async (data: any) => apiClient.post(URL.reservations, data);
-const update = async (id: string, data: any) => apiClient.put(`${URL.reservations}/${id}`, data);
-const remove = async (id: string) => apiClient.delete(`${URL.reservations}/${id}`);
+const list = async (params?: any) => apiClient.get(endpoints.reservations, { params });
+const get = async (id: string) => apiClient.get(`${endpoints.reservations}/${id}`);
+const create = async (data: any) => apiClient.post(endpoints.reservations, data);
+const update = async (id: string, data: any) => apiClient.put(`${endpoints.reservations}/${id}`, data);
+const remove = async (id: string) => apiClient.delete(`${endpoints.reservations}/${id}`);
 
 export const reservationService = {
   list,
