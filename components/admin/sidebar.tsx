@@ -25,6 +25,9 @@ const AdminSidebar = () => {
                 <Link href="/admin/reservations" className="text-foreground/80 hover:text-foreground">
                     Reservations
                 </Link>
+                <Link href="/admin/feedback" className="text-foreground/80 hover:text-foreground">
+                    Feedback
+                </Link>
             </nav>
             {user && (
                 <button

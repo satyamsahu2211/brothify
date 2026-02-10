@@ -8,6 +8,7 @@ export const endpoints = {
   users: BASE_URL + "users/",
   orders: BASE_URL + "orders/",
   reservations: BASE_URL + "reservations/",
+  feedback: BASE_URL + "feedback/",
 };
 
 export default endpoints;
