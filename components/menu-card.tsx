@@ -13,24 +13,38 @@ export function MenuCard({ title, price, image, caption, className }: MenuCardPr
   return (
     <article
       className={cn(
-        "group rounded-xl border border-border/50 bg-card/60 p-4 shadow-lg ring-1 ring-black/5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-brand/20",
+        "group relative overflow-hidden rounded-2xl border border-border/40 bg-card/50 p-4 transition-all duration-500 hover:bg-card hover:shadow-xl hover:border-brand/20",
         className,
       )}
     >
-      <div className="flex items-center gap-4">
-        <div className="relative h-20 w-20 overflow-hidden rounded-full border border-border/50 transition-transform duration-300 group-hover:scale-110">
-          <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+      <div className="flex items-start gap-4">
+        <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-border/50 shadow-sm">
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
         </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="truncate font-medium transition-colors group-hover:text-brand">{title}</h3>
-          {caption ? (
-            <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{caption}</p>
-          ) : null}
-          <div className="mt-2 inline-flex items-center gap-1 rounded-md bg-brand/10 px-2 py-1 text-xs font-medium text-brand transition-colors group-hover:bg-brand/20">
-            ${price}
+        <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
+          <div>
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="truncate font-serif text-lg font-medium tracking-tight text-foreground transition-colors group-hover:text-brand">
+                {title}
+              </h3>
+              <span className="shrink-0 rounded-full bg-brand/10 px-2.5 py-0.5 text-sm font-semibold text-brand">
+                ${price}
+              </span>
+            </div>
+            {caption ? (
+              <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-muted-foreground group-hover:text-muted-foreground/80">
+                {caption}
+              </p>
+            ) : null}
           </div>
         </div>
       </div>
+      <div className="absolute inset-0 ring-1 ring-inset ring-transparent transition-all duration-300 group-hover:ring-brand/10 rounded-2xl pointer-events-none" />
     </article>
   )
 }

@@ -22,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark antialiased">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        <div className="bg-noise" aria-hidden="true" />
         <Suspense fallback={<div>Loading...</div>}>
           <SiteHeader />
           {children}

@@ -20,42 +20,38 @@ export function SiteHeader() {
   const { data: me } = useSWR<{ email?: string; role?: "admin" | "user" }>([])
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="font-serif text-xl font-semibold tracking-tight">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <Link href="/" className="font-serif text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity">
           Brothify
           <span className="sr-only">Brothify home</span>
         </Link>
-
-        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm/6 font-medium text-muted-foreground hover:text-foreground transition-colors",
+                "text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group",
                 pathname === item.href && "text-foreground",
               )}
             >
               {item.label}
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all group-hover:w-full",
+                pathname === item.href && "w-full"
+              )} />
             </Link>
           ))}
         </nav>
-
-        <Link
-          href="/menu"
-          className="rounded-md bg-brand px-4 py-2 text-brand-foreground shadow hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
-          See Menu
-        </Link>
-        {/* {me?.role === "admin" ? (
+        <div className="flex items-center gap-4">
           <Link
-            href="/admin"
-            className="ml-2 rounded-md border border-border bg-background/70 px-4 py-2 text-foreground shadow hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            href="/menu"
+            className="rounded-full bg-brand px-6 py-2.5 text-sm font-medium text-brand-foreground shadow hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            Admin
+            Order Now
           </Link>
-        ) : null} */}
+        </div>
       </div>
     </header>
   )

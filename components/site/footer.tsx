@@ -1,86 +1,81 @@
+"use client"
+
 import Link from "next/link"
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/40 bg-card/30">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-4">
-        <div>
-          <h3 className="font-serif text-lg">Brothify</h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Fresh soups, shakes, and juices made with care.
+    <footer className="border-t border-border/40 bg-card/30 pt-16 pb-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-4">
+        <div className="md:col-span-1">
+          <Link href="/" className="font-serif text-2xl font-bold tracking-tight">
+            Brothify
+          </Link>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Nourishing souls with fresh, organic soups, shakes, and juices. Crafted with care in Brooklyn.
           </p>
-          <p className="mt-3 text-sm text-muted-foreground">brothify@gmail.com</p>
+          <div className="mt-6 flex gap-4">
+            {["twitter", "instagram", "facebook"].map((social) => (
+              <a
+                key={social}
+                href={`#${social}`}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-brand hover:text-brand-foreground"
+                aria-label={social}
+              >
+                <div className="h-4 w-4 bg-current" />
+              </a>
+            ))}
+          </div>
         </div>
+
         <div>
-          <h4 className="mb-3 font-medium">Company</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>
-              <Link href="/about" className="hover:text-foreground transition-colors">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/careers" className="hover:text-foreground transition-colors">
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link href="/press" className="hover:text-foreground transition-colors">
-                Press
-              </Link>
-            </li>
+          <h4 className="mb-4 font-serif font-medium">Company</h4>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            {["About Us", "Careers", "Press", "Blog"].map((item) => (
+              <li key={item}>
+                <Link href="#" className="hover:text-brand transition-colors">
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
+
         <div>
-          <h4 className="mb-3 font-medium">Legal</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>
-              <Link href="/privacy" className="hover:text-foreground transition-colors">
-                Privacy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-foreground transition-colors">
-                Terms
-              </Link>
-            </li>
-            <li>
-              <Link href="/accessibility" className="hover:text-foreground transition-colors">
-                Accessibility
-              </Link>
-            </li>
-            <li>
-              <Link href="/admin" className="hover:text-foreground transition-colors">
-                Admin
-              </Link>
-            </li>
+          <h4 className="mb-4 font-serif font-medium">Support</h4>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            {["Contact", "Terms of Service", "Privacy Policy", "Accessibility"].map((item) => (
+              <li key={item}>
+                <Link href="#" className="hover:text-brand transition-colors">
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
+
         <div>
-          <h4 className="mb-3 font-medium">Contact</h4>
-          <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
-            <li>302 Cornelia St</li>
-            <li>Brooklyn, NY 11238</li>
-            <li className="mt-3 text-brand">Open: 10AM – 9PM</li>
-          </ul>
-          {/* <div className="mt-4 flex items-center gap-3 text-sm">
-            <Link
-              href="/admin"
-              className="rounded-md border border-border/50 px-3 py-1.5 text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+          <h4 className="mb-4 font-serif font-medium">Stay Updated</h4>
+          <p className="mb-4 text-sm text-muted-foreground">
+            Subscribe to our newsletter for seasonal menu updates and offers.
+          </p>
+          <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground shadow hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
-              Admin
-            </Link>
-            <Link
-              href="/login"
-              className="rounded-md border border-border/50 px-3 py-1.5 text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-            >
-              Login
-            </Link>
-          </div> */}
+              Join
+            </button>
+          </form>
         </div>
       </div>
-      <div className="border-t border-border/40 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Brothify. All rights reserved.
+
+      <div className="mt-16 border-t border-border/40 pt-8 text-center text-xs text-muted-foreground">
+        <p>&copy; {new Date().getFullYear()} Brothify. All rights reserved.</p>
       </div>
     </footer>
   )
